@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var edName: EditText
     private lateinit var tvText: TextView
@@ -20,14 +21,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvMyMora: TextView
     private lateinit var tvTargetMora: TextView
 
-    // 在 companion object 中定義常數，取代 magic numbers
+ // 在 companion object 中定義常數，取代 magic numbers
     private companion object {
         const val SCISSORS = 0
         const val STONE = 1
         const val PAPER = 2
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+ override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -37,14 +38,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        initializeViews()
+initializeViews()
 
-        btnMora.setOnClickListener {
+ btnMora.setOnClickListener {
             playGame()
         }
     }
 
-    private fun initializeViews() {
+ private fun initializeViews() {
         edName = findViewById(R.id.edName)
         tvText = findViewById(R.id.tvText)
         radioGroup = findViewById(R.id.radioGroup)
@@ -55,20 +56,20 @@ class MainActivity : AppCompatActivity() {
         tvTargetMora = findViewById(R.id.tvTargetMora)
     }
 
-    private fun playGame() {
+ private fun playGame() {
         val playerName = edName.text.toString()
 
-        if (playerName.isBlank()) {
+  if (playerName.isBlank()) {
             tvText.text = "請輸入玩家姓名"
             return
         }
 
-        val playerMove = getPlayerMove()
+  val playerMove = getPlayerMove()
         val computerMove = (SCISSORS..PAPER).random() // 語意更清晰的隨機數產生
 
-        updateMovesUI(playerName, playerMove, computerMove)
+  updateMovesUI(playerName, playerMove, computerMove)
 
-        determineWinner(playerName, playerMove, computerMove)
+  determineWinner(playerName, playerMove, computerMove)
     }
     private fun getPlayerMove(): Int {
         return when (radioGroup.checkedRadioButtonId) {
@@ -107,4 +108,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}
+}2
